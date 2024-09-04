@@ -1,0 +1,143 @@
+1. django-admin startproject <project name>
+2. python manage.py runserver
+
+                                    TYPES OF ERROR
+                            no such table/ column found!
+                 1. python manage.py migrate (apply this when -> no table/column found...also -> django_session..)
+                            no such table:auth_user
+                2. python manage.py makemigration (apply this when no table/column found)
+add user: python manage.py createsuperuser  --> for admin panel
+usrname = arnab
+p/w = 1234
+email = a@l.com
+
+normal user->
+rohan@lala
+rohanlala
+
+---------------------------------------
+DAY - 12
+inside project - starting app
+3. python manage.py startapp connect
+
+after starting an app
+   ---> 1. install it in settings.py
+   ---> then,create as many def func() in views.. but connect it with ursl.py page
+   ---> then, to handle HTML  pages,we have concept of TEMPLATES! :--
+        --->create 'templates' dirrectory in APP folder.
+
+
+-------------------------------------------------
+Day 13:
+passing data from backend to frontend.. using dictionary!
+        --->{% for n in names %}
+                {{ n }}
+            {% endfor %}
+
+
+-------------------------------------------------
+Day 14:
+learn to zip two or more iterable together! using zip()
+like names with respective url!
+1. dynamic url.
+2. universal url.
+        imp TOPIC --> load static files in django
+        1. {% load static %} in top of html pages
+        2. then for images display --> img src={% static '<images name>' %}...
+
+-------------------------------------------
+Dya 15:
+url concepts!
+1.'dynamic url'-->
+        concept of 'name' as parameter...-> alias to main url!!.
+
+2.ERROR1!
+    TypeError at '/song/'
+    SongNumber() missing 1 required positional argument: 'SNum'
+    rectify --> the above function requires some standard value that isn't passed yet!.(can br int/str).
+    again page not found--> url problem.
+    THIS IS CONCEPT OF DYNAMIC URL ,SO LOOK IN HTML PAGES!
+
+ERROR2!
+    TemplateSyntaxError at /
+    Could not parse the remainder: ' 'students'' from 'url 'students'
+    rectify --> use this --> {%  %}  NOT this--> {{ }}
+
+ERROR3! (due to incorrect calling of url)
+NoReverseMatch at /
+Reverse for 'students' with no arguments not found. 1 pattern(s) tried: ['Details/(?P<Name>[^/]+)/\\Z']
+
+rectify--> directly go to html location and pass the dynamic value.
+
+---------------------------------------------
+Day 16
+how to apply conditions on HTML pages using if and endif
+Handling database:--
+        1. working/experencing shell programing
+            --> python manage.py shell  to stat console!
+              --> then, from django.contrib.auth.models import User
+                --> data = User.objects.all()
+                  --> data (press enter)
+                    -->
+Day 17:
+working on models.py files
+1.go to models.py and create models
+2.run--> python manage.py makemigrations Music
+3.run--> python manage.py migrate
+4.after making migration and all... go to admin.py and
+        run--> from .models import *  this will register user defined DATABASE in admin site.
+        run--> admin.site.register(<model name>)
+
+ ERROR !
+ <AttributeError at /album/
+'function' object has no attribute 'objects'>
+  rectify --> here ,just change the function name... DONT touch the database!
+  or, use alias like from .models import Album as al
+---------------------------------------------------------------------------
+
+
+Day 19
+ERROR!
+-->DoesNotExist at /song_details/122/
+Songs matching query does not exist.
+
+Rectify--> due to wrong input of id afetr url...
+------------------------------------------------------
+
+Day 20:
+ERROR!
+OperationalError at /all_songs/
+no such column: Music_songs.album_id_id
+
+1.in models.py --> image =  models.ImageField(null =True)
+2.and install image library ==> pip install pillow
+3.go to settings and search for static url-->
+    copy- paste this->
+                    STATIC_URL = '/static/'
+            MEDIA_URL = '/media/'
+            MEDIA_ROOT = os.path.join(BASE_DIR,"Upload")
+
+and in setting.py-->
+        from django.conf import settings
+        from django.conf.urls.static import static
+
+Day 21:-->
+
+working to add files and pictures from front-end
+1. make forms in html pages
+2.learn and memorise the codes def Add_Albums column in views.py!
+---------------------------------------------------------
+
+
+Day 22:
+Learning about how to connect two data bases with their ids
+
+how to login into account:-
+from django.contrib.auth import login,authenticate
+
+------------------------------------
+
+Day 23:
+integrating dynamic forms in django using forms.py
+
+
